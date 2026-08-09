@@ -1,0 +1,34 @@
+<div class="container">
+  <h1>Live Arrivals</h1>
+  <select (change)="onStationChange($event)">
+    @for (station of stations; track station.code) {
+      <option [value]="station.code">{{ station.name }}</option>
+    }
+  </select>
+  <table>
+    <thead>
+      <tr>
+        <th>Line</th>
+        <th>Destination</th>
+        <th>Minutes</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (train of predictions(); track train.Min) {
+        <tr>
+          <td><span class="line-badge line-{{ train.Line }}">{{ train.Line }}</span></td>
+          <td>{{ train.DestinationName }}</td>
+          <td>{{ train.Min }}</td>
+        </tr>
+      } @empty {
+        <tr><td colspan="3">No trains currently predicted for this station.</td></tr>
+      }
+    </tbody>
+  </table>
+
+  <h2 style="margin-top: 2.5rem;">Average Wait Trends (Last 7 Days)</h2>
+  @if (trendData().length === 0) {
+    <p style="color: #777;">Not enough historical data yet — check back after the tracker has been running a while.</p>
+  }
+  <canvas id="trendChart" style="max-height: 350px;"></canvas>
+</div>

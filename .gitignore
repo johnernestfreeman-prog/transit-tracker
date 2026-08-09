@@ -1,0 +1,13 @@
+node_modules/
+dist/
+.angular/
+
+target/
+*.class
+
+.env
+.DS_Store
+Thumbs.db
+
+.idea/
+.vscode/
