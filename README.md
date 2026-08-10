@@ -2,6 +2,9 @@
 
 A full-stack live transit dashboard for the DC Metro (WMATA), built to demonstrate a Java/Spring Boot + Angular + PostgreSQL stack  -  a combination frequently required in NoVA govcon junior full-stack postings.
 
+
+Live site: https://johnernestfreeman-prog.github.io/transit-tracker/
+
 ## Features
 
 - **Live train arrivals**  -  real-time predictions pulled from the WMATA API, selectable by station
