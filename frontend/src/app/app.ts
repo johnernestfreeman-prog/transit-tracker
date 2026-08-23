@@ -26,7 +26,7 @@ interface TrendEntry {
   avgMinutes: number;
 }
 
-const API_BASE_URL = "https://transit-tracker-env.eba-hndmkep8.us-east-1.elasticbeanstalk.com";
+const API_BASE_URL = "https://d2edvyjl8llo0z.cloudfront.net";
 
 @Component({
   selector: 'app-root',
