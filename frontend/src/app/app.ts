@@ -26,6 +26,8 @@ interface TrendEntry {
   avgMinutes: number;
 }
 
+const API_BASE_URL = "https://transit-tracker-env.eba-hndmkep8.us-east-1.elasticbeanstalk.com";
+
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet],
@@ -37,7 +39,6 @@ export class App implements OnInit {
   protected readonly predictions = signal<TrainPrediction[]>([]);
   protected readonly selectedStation = signal('A01');
   protected readonly trendData = signal<TrendEntry[]>([]);
-
   private chart: Chart | null = null;
 
   protected readonly stations: Station[] = [
@@ -71,12 +72,12 @@ export class App implements OnInit {
   }
 
   loadPredictions() {
-    this.http.get<TrainPrediction[]>("http://localhost:8080/api/predictions/" + this.selectedStation())
+    this.http.get<TrainPrediction[]>(API_BASE_URL + "/api/predictions/" + this.selectedStation())
       .subscribe(data => this.predictions.set(data));
   }
 
   loadTrends() {
-    this.http.get<TrendEntry[]>("http://localhost:8080/api/trends/" + this.selectedStation())
+    this.http.get<TrendEntry[]>(API_BASE_URL + "/api/trends/" + this.selectedStation())
       .subscribe(data => this.trendData.set(data));
   }
 
